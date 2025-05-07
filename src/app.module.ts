@@ -7,11 +7,13 @@ import { PlaylistModule } from './playlist/playlist.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { SongModule } from './song/song.module';
 
 @Module({
   imports: [
     UserModule,
     AlbumModule,
+    SongModule,
     PlaylistModule,
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
@@ -29,6 +31,7 @@ import { AuthModule } from './auth/auth.module';
       inject: [ConfigService],
     }),
     AuthModule,
+    SongModule,
   ],
   controllers: [AppController],
   providers: [AppService],
