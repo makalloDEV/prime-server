@@ -1,5 +1,3 @@
-import { Album } from 'src/album/entities/album.entity';
-import { Playlist } from 'src/playlist/entities/playlist.entity';
 import { Song } from 'src/song/entities/song.entity';
 import {
   Column,
@@ -24,16 +22,8 @@ export class User {
   @Column()
   password: string;
 
-  @ManyToMany(() => Album, (album) => album.users)
-  @JoinTable()
-  albums: Album[];
-
   @OneToMany(() => SongToUser, (songToUser) => songToUser.user)
   songToUser: SongToUser[];
-
-  @OneToMany(() => Playlist, (playlist) => playlist.user)
-  @JoinTable()
-  createdPlaylists: Playlist[];
 
   @CreateDateColumn()
   createdAt: Date;

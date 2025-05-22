@@ -4,7 +4,6 @@ import { UpdateSongDto } from './dto/update-song.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Song } from './entities/song.entity';
 import { Repository, UpdateResult } from 'typeorm';
-import { AddSongToAlbumDto } from './dto/add-to-album.dto';
 
 @Injectable()
 export class SongService {
@@ -18,22 +17,7 @@ export class SongService {
       imageUrl: createSongDto.imgUrl,
       createdBy: createSongDto.createdBy,
     });
-  }
-
-  async createToAlbum(
-    addSongToAlbumDto: AddSongToAlbumDto,
-    img: string,
-    createdBy: string,
-    albumId: number,
-  ) {
-    const song = await this.songRepository.save({
-      title: addSongToAlbumDto.title,
-      albumNumber: addSongToAlbumDto.albumNumber,
-      audioUrl: addSongToAlbumDto.audioUrl,
-      imageUrl: img,
-      createdBy: createdBy,
-      albumId: albumId,
-    });
+    return song;
   }
 
   async findOne(songId: number): Promise<Song> {

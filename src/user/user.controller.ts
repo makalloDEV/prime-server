@@ -33,4 +33,10 @@ export class UserController {
   getSongs(@Req() req) {
     return this.userService.getSongsFromUserCollection(+req.user.id);
   }
+
+  @Get('created_songs/:userId')
+  @UseGuards(JwtAuthGuard)
+  getCreatedSongs(@Param('userId') songId: string, @Req() req) {
+    return this.userService.getCreatedSongs(+req.user.id);
+  }
 }

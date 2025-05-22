@@ -1,6 +1,3 @@
-import { Album } from 'src/album/entities/album.entity';
-import { Playlist } from 'src/playlist/entities/playlist.entity';
-import { SongToPlaylist } from 'src/playlist/entities/playlistSong.entity';
 import { User } from 'src/user/entities/user.entity';
 import { SongToUser } from 'src/user/entities/userSong.entity';
 import {
@@ -37,13 +34,6 @@ export class Song {
 
   @OneToMany(() => SongToUser, (songToUser) => songToUser.song)
   songToUser: SongToUser[];
-
-  @ManyToOne(() => Album, (album) => album.songs)
-  @JoinColumn({ name: 'albumId' })
-  album: Album;
-
-  @OneToMany(() => SongToPlaylist, (songToPlaylist) => songToPlaylist.song)
-  songToPlaylist: SongToPlaylist[];
 
   @CreateDateColumn()
   createdAt: Date;

@@ -13,7 +13,6 @@ import { SongService } from './song.service';
 import { CreateSongDto } from './dto/create-song.dto';
 import { UpdateSongDto } from './dto/update-song.dto';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth-guard';
-import { AlbumService } from 'src/album/album.service';
 
 @Controller('song')
 export class SongController {

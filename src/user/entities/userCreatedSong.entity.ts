@@ -5,22 +5,19 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
 } from 'typeorm';
-import { Playlist } from './playlist.entity';
+import { User } from './user.entity';
 import { Song } from 'src/song/entities/song.entity';
 
 @Entity()
-export class SongToPlaylist {
+export class CreatedSongToUser {
   @PrimaryGeneratedColumn()
-  public songToPlaylistId: number;
+  public CreatedSongToUserId: number;
 
   @Column()
-  public playlistId: number;
+  public userId: number;
 
   @Column()
   public songId: number;
-
-  @Column()
-  public songPlaylistNumber: number;
 
   @CreateDateColumn()
   public createdAt: Date;
@@ -28,6 +25,6 @@ export class SongToPlaylist {
   @ManyToOne(() => Song, (song) => song)
   public song: Song;
 
-  @ManyToOne(() => Playlist, (playlist) => playlist)
-  public playlist: Playlist;
+  @ManyToOne(() => User, (user) => user)
+  public user: User;
 }
